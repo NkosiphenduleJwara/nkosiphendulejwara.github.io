@@ -504,7 +504,7 @@
         document.querySelector('.prev').addEventListener('click', () => {
             clearTimeout(slideTimer);
             showSlide(slideIndex += -1);
-            startAutoSlide();
+            startAutoSlideToggle();
         });
 
         document.querySelector('.next').addEventListener('click', () => {
@@ -551,6 +551,14 @@
                 showSlide(slideIndex);
                 startAutoSlide();
             }, 5000); // Change slide every 5 seconds
+        }
+
+        function startAutoSlideToggle() {
+            slideTimer = setTimeout(() => {
+                slideIndex++;
+                showSlide(slideIndex);
+                startAutoSlide();
+            }, 15000); // Change slide every 15 seconds
         }
     </script>
 </body>
