@@ -34,6 +34,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#updates">Updates</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#delete-account">Delete Account</a></li>
             </ul>
             <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                 <span id="themeIcon">🌙</span>
@@ -465,6 +466,62 @@
         </div>
     </section>
 
+    <!-- Delete Account Section -->
+    <section id="delete-account" class="account-deletion">
+        <div class="container">
+            <h2 class="section-title">Delete My Account</h2>
+            <div class="account-deletion-content">
+                <p class="account-deletion-intro">
+                    If you want your account and related data removed from the app, complete the request form below.
+                    This helps us verify ownership and process your deletion request quickly.
+                </p>
+                <ul class="account-deletion-list">
+                    <li>Requests are processed in the order received.</li>
+                    <li>We may contact you for additional verification before deletion.</li>
+                    <li>Once deleted, your account data cannot be recovered.</li>
+                </ul>
+
+                <form id="deleteAccountForm" class="delete-account-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="accountEmail">Email Linked to Your Account *</label>
+                            <input type="email" id="accountEmail" name="accountEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appName">App Name *</label>
+                            <input type="text" id="appName" name="appName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username / User ID *</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number (optional)</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="deletionReason">Reason for Deletion (optional)</label>
+                        <textarea id="deletionReason" name="deletionReason" rows="4"></textarea>
+                    </div>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="confirmOwnership" name="confirmOwnership" required>
+                        <span>I confirm that I am the owner of this account and I want it permanently deleted. *</span>
+                    </label>
+                    <button type="submit" class="delete-account-btn">Submit Deletion Request</button>
+                    <p class="account-deletion-note">
+                        Update the support email in the page script before publishing so requests are sent to the right inbox.
+                    </p>
+                    <p id="deleteAccountStatus" class="account-deletion-status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -599,6 +656,42 @@
                 showSlide(slideIndex);
                 startAutoSlide();
             }, 15000); // Change slide every 15 seconds
+        }
+
+        // Delete account request form
+        const deleteAccountForm = document.getElementById('deleteAccountForm');
+        const deleteAccountStatus = document.getElementById('deleteAccountStatus');
+        const accountDeletionSupportEmail = 'support@yourapp.com';
+
+        if (deleteAccountForm && deleteAccountStatus) {
+            deleteAccountForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(deleteAccountForm);
+                const fullName = formData.get('fullName') || '';
+                const accountEmail = formData.get('accountEmail') || '';
+                const appName = formData.get('appName') || '';
+                const username = formData.get('username') || '';
+                const phoneNumber = formData.get('phoneNumber') || 'Not provided';
+                const deletionReason = formData.get('deletionReason') || 'Not provided';
+                const confirmOwnership = formData.get('confirmOwnership') ? 'Yes' : 'No';
+
+                const subject = encodeURIComponent(`${appName} - Account Deletion Request`);
+                const body = encodeURIComponent(
+`Account Deletion Request
+
+Full Name: ${fullName}
+Email Linked to Account: ${accountEmail}
+App Name: ${appName}
+Username / User ID: ${username}
+Phone Number: ${phoneNumber}
+Reason for Deletion: ${deletionReason}
+Account Ownership Confirmed: ${confirmOwnership}`
+                );
+
+                window.location.href = `mailto:${accountDeletionSupportEmail}?subject=${subject}&body=${body}`;
+                deleteAccountStatus.textContent = 'Your email app should open now so you can send the request.';
+            });
         }
     </script>
 </body>
