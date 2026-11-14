@@ -1135,6 +1135,7 @@ textarea:focus-visible {
 .prose li p { margin: 0; }
 .prose strong { color: var(--text-dark); }
 .prose a { color: var(--primary-color); word-break: break-word; }
+.prose a.btn-solid { color: #fff; text-decoration: none; }
 
 .toc {
     background-color: var(--background-light);
