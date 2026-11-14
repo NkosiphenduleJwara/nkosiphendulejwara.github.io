@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found | Nkosiphendule Jwara</title>
+    <meta name="description" content="Page not found.">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nkosiphendule Jwara">
+    <meta property="og:title" content="Page not found">
+    <meta property="og:description" content="Page not found.">
+    <meta property="og:url" content="https://nkosiphendulejwara.tech/404.html">
+    <meta property="og:image" content="https://nkosiphendulejwara.tech/assets/img/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="/NJ.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark-mode')}catch(e){}</script>
+    <script data-goatcounter="https://nkosiphendulejwara.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <nav class="navbar" aria-label="Main">
+        <div class="container">
+            <a class="nav-brand" href="/" aria-label="Nkosiphendule Jwara home">NJ</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#apps">Apps</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/privacy-policy/">Privacy</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+                <span id="themeIcon" aria-hidden="true">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+    <header class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Error 404</span>
+            <h1 id="nfTitle">Page not found</h1>
+            <p id="nfText">That page doesn't exist, or it moved.</p>
+        </div>
+    </header>
+
+    <section class="page-section">
+        <div class="container">
+            <div class="page-card prose" style="text-align:center">
+                <p id="nfAppHint" hidden>This link is meant to open in one of my apps. If you have the app installed, open the link on your phone.
+                    If not, the app isn't available yet. Check <a href="/#apps">My Apps</a> for updates.</p>
+                <p><a class="btn-solid" href="/">Go to the home page</a></p>
+                <p style="margin-top:1rem"><a href="/#projects">Projects</a> · <a href="/support/">App support</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/delete-account/">Delete my account</a></p>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="/delete-account/">Delete My Account</a></li>
+                <li><a href="/support/">App Support</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <p>&copy; <span data-year>2026</span> Nkosiphendule Jwara. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/site.js"></script>
+    <script>
+        // Universal-link paths (see .well-known/apple-app-site-association) land here when the app isn't installed.
+        if (/^\/(book|rewards|stores)(\/|$)/.test(location.pathname)) {
+            document.getElementById('nfTitle').textContent = 'Open this in the app';
+            document.getElementById('nfText').textContent = 'This is a Barbershop app link.';
+            document.getElementById('nfAppHint').hidden = false;
+        }
+    </script>
+</body>
+</html>
