@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Support | Nkosiphendule Jwara</title>
+    <meta name="description" content="Get help with apps by Nkosiphendule Jwara: send a question, bug report or feedback, or find the privacy policy and account deletion page.">
+    <link rel="canonical" href="https://nkosiphendulejwara.tech/support/">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nkosiphendule Jwara">
+    <meta property="og:title" content="App Support">
+    <meta property="og:description" content="Get help with apps by Nkosiphendule Jwara: send a question, bug report or feedback, or find the privacy policy and account deletion page.">
+    <meta property="og:url" content="https://nkosiphendulejwara.tech/support/">
+    <meta property="og:image" content="https://nkosiphendulejwara.tech/assets/img/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="/NJ.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark-mode')}catch(e){}</script>
+    <script data-goatcounter="https://nkosiphendulejwara.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <nav class="navbar" aria-label="Main">
+        <div class="container">
+            <a class="nav-brand" href="/" aria-label="Nkosiphendule Jwara home">NJ</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#apps">Apps</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/privacy-policy/">Privacy</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+                <span id="themeIcon" aria-hidden="true">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+    <header class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Help for my apps</span>
+            <h1>App Support</h1>
+            <p>Questions, bugs or feedback about an app by Nkosiphendule Jwara? Send a message and I'll get back to you by email.</p>
+        </div>
+    </header>
+
+    <section class="page-section">
+        <div class="container">
+            <div class="page-card prose">
+                <div class="info-grid" style="margin-top:0">
+                    <div class="info-tile">
+                        <h3>🗑️ Delete your account</h3>
+                        <p><a href="/delete-account/">Request account or data deletion</a></p>
+                    </div>
+                    <div class="info-tile">
+                        <h3>🔒 Privacy</h3>
+                        <p><a href="/privacy-policy/">Read the Privacy Policy</a></p>
+                    </div>
+                    <div class="info-tile">
+                        <h3>💼 Other enquiries</h3>
+                        <p>Jobs, collaborations and events: <a href="/#contact">contact me</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <h2 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark)">Contact support</h2>
+                <form id="supportForm" class="delete-account-form" data-web3forms
+                      data-subject="{app} - Support: {topic}"
+                      data-success="✅ Message sent. I'll reply to the email address you gave."
+                      novalidate>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="supportApp">App <span class="req">*</span></label>
+                            <select id="supportApp" name="app" required data-app-select>
+                                <option value="" disabled selected>Choose an app</option>
+                                <option value="optigainz" data-aliases="opti-gainz-track-ai optigainztrackai gym-ai gymai">Opti Gainz Track AI</option>
+                                <option value="barbershop" data-aliases="tech.nkosiphendulejwara.barbershop">Barbershop</option>
+                                <option value="other">Other / not sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supportTopic">Topic <span class="req">*</span></label>
+                            <select id="supportTopic" name="topic" required>
+                                <option value="Question" selected>Question</option>
+                                <option value="Bug report">Bug report</option>
+                                <option value="Feature idea">Feature idea</option>
+                                <option value="Account or login">Account or login</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supportName">Name <span class="req">*</span></label>
+                            <input type="text" id="supportName" name="name" autocomplete="name" required maxlength="120">
+                        </div>
+                        <div class="form-group">
+                            <label for="supportEmail">Email <span class="req">*</span></label>
+                            <input type="email" id="supportEmail" name="email" autocomplete="email" required maxlength="200">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="supportDevice">Device and app version (optional)</label>
+                        <input type="text" id="supportDevice" name="device" maxlength="200" placeholder="e.g. iPhone 15, iOS 26, app 1.2.0">
+                    </div>
+                    <div class="form-group">
+                        <label for="supportMessage">Message <span class="req">*</span></label>
+                        <textarea id="supportMessage" name="message" rows="5" required maxlength="4000"></textarea>
+                    </div>
+
+                    <label class="hp-field" aria-hidden="true">Leave this empty
+                        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+                    </label>
+
+                    <div class="captcha-wrap"><div class="h-captcha"></div></div>
+
+                    <button type="submit" class="delete-account-btn">Send message</button>
+                    <p class="form-status" aria-live="polite"></p>
+                    <p class="account-deletion-note">Sent by email through Web3Forms, protected by hCaptcha.
+                        Or email <a data-request-email href="/#contact">the support inbox</a> directly.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="/delete-account/">Delete My Account</a></li>
+                <li><a href="/support/">App Support</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <p>&copy; <span data-year>2026</span> Nkosiphendule Jwara. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/site.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js?render=explicit&amp;onload=onHcaptchaLoad&amp;recaptchacompat=off" async defer></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GV 2026 Letters Processing System | Nkosiphendule Jwara</title>
+    <meta name="description" content="Case study: a multi-threaded Python server app that processed about 600,000 eThekwini Municipality GV 2026 notice letters overnight instead of by hand.">
+    <link rel="canonical" href="https://nkosiphendulejwara.tech/projects/gv-letters/">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nkosiphendule Jwara">
+    <meta property="og:title" content="GV 2026 Letters Processing System">
+    <meta property="og:description" content="Case study: a multi-threaded Python server app that processed about 600,000 eThekwini Municipality GV 2026 notice letters overnight instead of by hand.">
+    <meta property="og:url" content="https://nkosiphendulejwara.tech/projects/gv-letters/">
+    <meta property="og:image" content="https://nkosiphendulejwara.tech/assets/img/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="/NJ.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark-mode')}catch(e){}</script>
+    <script data-goatcounter="https://nkosiphendulejwara.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <nav class="navbar" aria-label="Main">
+        <div class="container">
+            <a class="nav-brand" href="/" aria-label="Nkosiphendule Jwara home">NJ</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#apps">Apps</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/privacy-policy/">Privacy</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+                <span id="themeIcon" aria-hidden="true">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+    <header class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Case study · eThekwini Municipality</span>
+            <h1>GV 2026 Letters Processing System</h1>
+            <p>How a trainee team turned a month-long manual mail-merge job into an overnight, automated server process.</p>
+        </div>
+    </header>
+
+    <section class="page-section">
+        <div class="container">
+            <p class="breadcrumb"><a href="/#projects">&larr; All projects</a></p>
+            <article class="page-card prose">
+                <figure class="project-shot grad-amber">
+                    <!-- Replace with a screenshot of the Tkinter GUI: <img src="/assets/img/projects/gv-letters.png" alt="Letters processing app window"> -->
+                    <span>📨 Letters Processing Server Application</span>
+                </figure>
+
+                <div class="stat-row">
+                    <div class="stat"><strong>~600,000</strong><span>GV 2026 notice letters</span></div>
+                    <div class="stat"><strong>5,000</strong><span>letters per person per day, by hand</span></div>
+                    <div class="stat"><strong>100,000</strong><span>letters per batch, overnight</span></div>
+                    <div class="stat"><strong>Days</strong><span>instead of weeks past the deadline</span></div>
+                </div>
+
+                <ul class="tag-list" aria-label="Technologies" style="margin-bottom:1.5rem">
+                    <li class="tag">Python</li>
+                    <li class="tag">Multi-threading</li>
+                    <li class="tag">Tkinter GUI</li>
+                    <li class="tag">Server VM</li>
+                    <li class="tag">PDF generation</li>
+                    <li class="tag">Error handling &amp; logging</li>
+                </ul>
+
+                <h2>The problem</h2>
+                <p>
+                    As trainees in the IMU Applications and Projects team, we were asked to help the Real Estate Revenue department
+                    process about six hundred thousand (600,000) GV 2026 notice letters, fast. Customers and businesses that own
+                    property had to receive them by email in time to review them and raise enquiries.
+                </p>
+                <p>The manual process had three steps for every batch:</p>
+                <ol>
+                    <li>Mail merge a spreadsheet into Microsoft Word.</li>
+                    <li>Cut the merged document into single letters with a third-party app.</li>
+                    <li>Rename each PDF uniquely for its customer before emailing it.</li>
+                </ol>
+                <p>
+                    Each of us could only get through about 5,000 letters a day, and that took the whole working day. Our laptops
+                    crashed when we pushed bigger batches, the third-party tool sometimes corrupted letters, and every batch had to
+                    be sample-checked by hand. We were never going to make the deadline.
+                </p>
+
+                <h2>What I built</h2>
+                <p>
+                    I built a server desktop application, out of pure necessity, that runs the whole pipeline on its own: spreadsheet in,
+                    cleanly named individual PDFs out. It uses multi-threading to process letters at the same time and estimates how
+                    long each run will take.
+                </p>
+                <p>
+                    I worked with a senior Applications Engineer to get Virtual Machine access on an available server, set the
+                    application up there and ran it at full scale. Instead of our 5,000-letter limit, it processed batches of up to
+                    100,000 letters overnight while we were sleeping. We came back the next day to accurate letters, ready to send
+                    to the email server.
+                </p>
+                <p>Then I kept improving it:</p>
+                <ul>
+                    <li>A GUI built with Tkinter, so anyone on the team can run it.</li>
+                    <li>Grouping the output letters into folders.</li>
+                    <li>Robust error handling so each batch is processed cleanly.</li>
+                    <li>A log of every run written to a temporary text file in the Windows temp folder.</li>
+                    <li>Graceful handling of duplicates and unexpected data.</li>
+                    <li>A User Manual for the team.</li>
+                </ul>
+
+                <h2>The result</h2>
+                <p>
+                    A job that could have run more than a month past the deadline was finished in a matter of days. I am truly proud of it,
+                    and I learned a lot about what goes into an internal application, from the server setup to writing the user manual.
+                </p>
+
+                <p style="margin-top:2rem"><a class="btn-solid" href="/#contact">Talk to me about a project like this</a></p>
+            </article>
+        </div>
+    </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="/delete-account/">Delete My Account</a></li>
+                <li><a href="/support/">App Support</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <p>&copy; <span data-year>2026</span> Nkosiphendule Jwara. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/site.js"></script>
+
+</body>
+</html>
