@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": [ "<357ZAK7UH4>.<tech.nkosiphendulejwara.barbershop>" ],
+        "appIDs": [ "357ZAK7UH4.tech.nkosiphendulejwara.barbershop" ],
         "components": [
           { "/": "/book/*" },
           { "/": "/rewards/*" },
