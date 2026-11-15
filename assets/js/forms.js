@@ -6,6 +6,10 @@
  *   data-subject   subject line; {field} = shown text, {field.value} = raw value
  *   data-success   message shown after a successful send
  * Fields named "botcheck" (honeypot) and "h-captcha-response" are handled here.
+ *
+ * POPIA: hCaptcha (a foreign service) only loads after the visitor agrees, either in the
+ * site banner (consent.js) or by ticking the form's required "popia_consent" box. Each
+ * request also carries consent_recorded_at, so the email is your record of consent.
  */
 (function () {
     var cfg = window.SITE_CONFIG || {};
@@ -28,8 +32,8 @@
             if (!box) return;
             if (widgets.has(form)) {
                 try { window.hcaptcha.remove(widgets.get(form)); } catch (e) {}
-                box.innerHTML = '';
             }
+            box.innerHTML = '';
             var id = window.hcaptcha.render(box, {
                 sitekey: cfg.hcaptchaSiteKey,
                 theme: isDark() ? 'dark' : 'light',
@@ -40,8 +44,39 @@
     }
 
     window.onHcaptchaLoad = renderCaptchas;
-    if (window.hcaptcha && window.hcaptcha.render) renderCaptchas();
     document.addEventListener('themechange', renderCaptchas);
+
+    var hcaptchaRequested = false;
+    function loadHcaptcha() {
+        if (hcaptchaRequested) return;
+        hcaptchaRequested = true;
+        var s = document.createElement('script');
+        s.src = 'https://js.hcaptcha.com/1/api.js?render=explicit&onload=onHcaptchaLoad&recaptchacompat=off';
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+    }
+
+    // Until hCaptcha loads, explain why the box is empty.
+    forms.forEach(function (form) {
+        var box = form.querySelector('.h-captcha');
+        if (box && !box.childNodes.length) {
+            box.innerHTML = '<p class="captcha-placeholder">The “I am human” check appears after you tick the consent box above.</p>';
+        }
+        var consentBox = form.querySelector('[name="popia_consent"]');
+        if (consentBox) {
+            consentBox.addEventListener('change', function () {
+                if (consentBox.checked) loadHcaptcha();
+            });
+            if (consentBox.checked) loadHcaptcha();
+        }
+    });
+
+    function maybeLoadFromBanner() {
+        if (window.SiteConsent && window.SiteConsent.accepted()) loadHcaptcha();
+    }
+    maybeLoadFromBanner();
+    document.addEventListener('consentchange', maybeLoadFromBanner);
 
     function captchaToken(form) {
         if (!widgets.has(form) || !window.hcaptcha) return '';
@@ -142,7 +177,8 @@
                 access_key: cfg.web3formsAccessKey,
                 subject: subjectFor(form),
                 from_name: 'nkosiphendulejwara.tech',
-                'h-captcha-response': token
+                'h-captcha-response': token,
+                consent_recorded_at: new Date().toISOString()
             };
             new FormData(form).forEach(function (value, name) {
                 if (name === 'botcheck' || name.indexOf('captcha-response') !== -1) return;

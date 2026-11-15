@@ -47,11 +47,15 @@ python3 -m json.tool .well-known/apple-app-site-association
   - When `web3formsAccessKey` is still the `YOUR_...` placeholder, or the request fails, the form shows a pre-filled `mailto:` fallback to the address in `config.requestEmail`.
   - `?app=<id|bundle id>` preselects `select[data-app-select]` by option `value` or `data-aliases`.
   - Setup and the captcha walkthrough are in `docs/forms-and-captcha-guide.md`.
+  - hCaptcha is not in the page HTML. `forms.js` injects it after consent.
 - **Apps registry**: no single source. When you add an app, update the `<option>` list in **both** `delete-account/index.html` and `support/index.html`, add a card to `#apps` in `index.html`, and add its entry to the AASA file if it uses Universal Links.
 - **LinkedIn updates**: `assets/js/linkedin-posts.js` holds `LINKEDIN_POSTS` (newest first: `urn` plus a fixed iframe `height`) and renders them into `#postsGrid`. LinkedIn has no public feed API, so posts are added by hand.
 - **404.html** doubles as the web fallback for Universal Link paths (`/book`, `/rewards`, `/stores`). It switches its message when the path matches one of them. Keep that regex in sync with the AASA `components`.
 - **Privacy policy** content was generated with freeprivacypolicy.com (live copy: `https://www.freeprivacypolicy.com/live/a2b23a08-0318-4fe4-937f-1058c043c442`) and pasted into `privacy-policy/index.html`. Keep the generator attribution line. Its "Application" definition names only Opti Gainz Track AI.
-- **Analytics**: GoatCounter (`nkosiphendulejwara.goatcounter.com`) on every page.
+- **POPIA consent** (`assets/js/consent.js`, loaded before `site.js` on every page): a banner stores `localStorage['popia-consent']` as JSON `{choice, at, v}`. It re-asks after 365 days or when `NOTICE_VERSION` is bumped. Bump that when the privacy notice changes and exposes `window.SiteConsent` plus a `consentchange` event. Elements with `data-consent-open` (the footer "Privacy choices" button) reopen it.
+  - **Third-party scripts and embeds must be gated on `SiteConsent.accepted()`.** That covers GoatCounter (injected by `consent.js`), LinkedIn iframes and hCaptcha preloading.
+  - Forms are **not** disabled on decline. Each form has its own required `popia_consent` tick box, which also triggers the hCaptcha load, and every request carries `consent_recorded_at`.
+  - The rationale is in `docs/popia-consent.md`. The s18 notice is at `/privacy-policy/#website-privacy`.
 - **Images**:
   - `assets/img/og-image.jpg` (1200×630 social card)
   - `assets/img/apple-touch-icon.png` (180×180)

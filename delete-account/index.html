@@ -17,7 +17,6 @@
     <link rel="icon" type="image/x-icon" href="/NJ.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
     <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark-mode')}catch(e){}</script>
-    <script data-goatcounter="https://nkosiphendulejwara.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -140,6 +139,13 @@
                         <span>I confirm I own this account and understand that deleted data can't be recovered. <span class="req">*</span></span>
                     </label>
 
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="popiaConsentDelete" name="popia_consent" value="Yes" required>
+                        <span>I agree that Nkosiphendule Jwara may use these details to handle this deletion request, and that they are sent outside South Africa through
+                            Web3Forms (email delivery) and hCaptcha (spam check). See the <a href="/privacy-policy/#website-privacy">website privacy notice</a>.
+                            Don't agree? Email <a data-request-email href="/support/">the support inbox</a> instead. <span class="req">*</span></span>
+                    </label>
+
                     <!-- Honeypot: hidden from people, bots fill it in -->
                     <label class="hp-field" aria-hidden="true">Leave this empty
                         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
@@ -167,14 +173,15 @@
                 <li><a href="/delete-account/">Delete My Account</a></li>
                 <li><a href="/support/">App Support</a></li>
                 <li><a href="/#contact">Contact</a></li>
+                <li><button type="button" class="link-button" data-consent-open>Privacy choices</button></li>
             </ul>
             <p>&copy; <span data-year>2026</span> Nkosiphendule Jwara. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="/assets/js/consent.js"></script>
     <script src="/assets/js/site.js"></script>
     <script src="/assets/js/config.js"></script>
     <script src="/assets/js/forms.js"></script>
-    <script src="https://js.hcaptcha.com/1/api.js?render=explicit&amp;onload=onHcaptchaLoad&amp;recaptchacompat=off" async defer></script>
 </body>
 </html>
