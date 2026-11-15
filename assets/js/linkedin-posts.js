@@ -17,17 +17,48 @@ window.LINKEDIN_POSTS = [
     if (!grid) return;
     var posts = window.LINKEDIN_POSTS || [];
     var limit = parseInt(grid.getAttribute('data-limit') || '6', 10);
+    var rendered = false;
 
-    posts.slice(0, limit).forEach(function (post, i) {
-        var wrap = document.createElement('div');
-        wrap.className = 'post-embed';
-        var frame = document.createElement('iframe');
-        frame.src = 'https://www.linkedin.com/embed/feed/update/' + post.urn;
-        frame.height = String(post.height || 900);
-        frame.loading = i === 0 ? 'eager' : 'lazy';
-        frame.title = 'LinkedIn post ' + (i + 1) + ' by Nkosiphendule Jwara';
-        frame.setAttribute('allowfullscreen', '');
-        wrap.appendChild(frame);
-        grid.appendChild(wrap);
-    });
+    // LinkedIn embeds set third-party cookies, so they only load after POPIA consent (consent.js).
+    function placeholder() {
+        grid.innerHTML = '';
+        var box = document.createElement('div');
+        box.className = 'consent-placeholder';
+        box.innerHTML = '<p>My LinkedIn posts are hidden because they load content and cookies from LinkedIn. ' +
+            'They show once you agree in Privacy choices.</p>' +
+            '<button type="button" class="btn-solid" data-consent-open>Review privacy choices</button>';
+        grid.appendChild(box);
+    }
+
+    function render() {
+        if (rendered) return;
+        rendered = true;
+        grid.innerHTML = '';
+        posts.slice(0, limit).forEach(function (post, i) {
+            var wrap = document.createElement('div');
+            wrap.className = 'post-embed';
+            var frame = document.createElement('iframe');
+            frame.src = 'https://www.linkedin.com/embed/feed/update/' + post.urn;
+            frame.height = String(post.height || 900);
+            frame.loading = i === 0 ? 'eager' : 'lazy';
+            frame.title = 'LinkedIn post ' + (i + 1) + ' by Nkosiphendule Jwara';
+            frame.setAttribute('allowfullscreen', '');
+            wrap.appendChild(frame);
+            grid.appendChild(wrap);
+        });
+    }
+
+    function update() {
+        var consent = window.SiteConsent;
+        if (consent && consent.accepted()) {
+            render();
+        } else {
+            // Declined after the posts loaded: remove them for the rest of the visit.
+            rendered = false;
+            placeholder();
+        }
+    }
+
+    update();
+    document.addEventListener('consentchange', update);
 })();

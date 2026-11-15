@@ -17,7 +17,6 @@
     <link rel="icon" type="image/x-icon" href="/NJ.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
     <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark-mode')}catch(e){}</script>
-    <script data-goatcounter="https://nkosiphendulejwara.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -56,6 +55,55 @@
 
     <section class="page-section">
         <div class="container">
+            <article class="page-card prose" id="website-privacy">
+                <h2 style="border:0;margin-top:0;padding-top:0">Website privacy notice (POPIA)</h2>
+                <p>This notice covers <strong>this website</strong>, nkosiphendulejwara.tech, under South Africa's Protection of Personal
+                    Information Act, 2013 (POPIA). The app privacy policy follows below.</p>
+
+                <h3>Who is responsible</h3>
+                <p>Nkosiphendule Jwara, Durban, KwaZulu-Natal, South Africa.
+                    Email: <a href="mailto:codermpendulo@gmail.com">codermpendulo@gmail.com</a>.</p>
+
+                <h3>What is collected, and why</h3>
+                <ul>
+                    <li><strong>Forms</strong> (<a href="/delete-account/">Delete My Account</a>, <a href="/support/">App Support</a>): the details you type
+                        (name, email, app, username, message, device). They are used only to handle your request and reply to you.</li>
+                    <li><strong>Visit counts</strong>, only if you agree: GoatCounter records page views, browser type, screen size and referring site.
+                        It uses no cookies and keeps no IP address in my reports.</li>
+                    <li><strong>LinkedIn posts</strong>, only if you agree: the embedded posts load from LinkedIn, which may set cookies
+                        and receive your IP address and browser details.</li>
+                    <li><strong>In your browser only</strong>: your light or dark theme (<code>localStorage</code>) and your privacy choice
+                        (<code>localStorage</code>, kept for up to 12 months or until you clear your browser data). These are never sent to me.</li>
+                </ul>
+
+                <h3>Voluntary, and what happens if you say no</h3>
+                <p>Everything is voluntary. If you decline in <em>Privacy choices</em>, the site still works, but visit counts and LinkedIn posts are switched off.
+                    The forms ask for their own consent. If you don't give it, you can't send the form, but you can email the same request to the address above.</p>
+
+                <h3>Who receives it, and transfers outside South Africa</h3>
+                <p>These services handle your information for me. All of them are based or host data outside South Africa, so your information is transferred
+                    with your consent (POPIA section 72(1)(b)):</p>
+                <ul>
+                    <li><a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer">Web3Forms</a>: delivers form messages to my email.</li>
+                    <li><a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">hCaptcha</a>: the “I am human” check on forms.</li>
+                    <li><a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter</a>: visit counts.</li>
+                    <li><a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">LinkedIn</a>: embedded posts.</li>
+                    <li>Google (Gmail): the inbox where form messages arrive.</li>
+                </ul>
+
+                <h3>How long it is kept</h3>
+                <p>Form messages are kept only as long as needed to handle your request, and for no more than 24 months, unless the law requires longer.</p>
+
+                <h3>Your rights</h3>
+                <p>You can ask to see, correct or delete your personal information, object to its processing, or withdraw your consent at any time.
+                    To withdraw website consent, choose <button type="button" class="text-link link-inline" data-consent-open>Privacy choices</button>.
+                    For anything else, email me. Withdrawing consent doesn't affect processing that already happened.</p>
+                <p>You may also complain to the <strong>Information Regulator (South Africa)</strong>:
+                    <a href="https://inforegulator.org.za" target="_blank" rel="noopener noreferrer">inforegulator.org.za</a>,
+                    <a href="mailto:POPIAComplaints@inforegulator.org.za">POPIAComplaints@inforegulator.org.za</a>,
+                    general enquiries <a href="mailto:enquiries@inforegulator.org.za">enquiries@inforegulator.org.za</a>, tel. 010 023 5200.</p>
+            </article>
+
             <article class="page-card prose">
                 <nav class="toc" aria-label="On this page">
                     <h2>On this page</h2>
@@ -271,11 +319,13 @@
                 <li><a href="/delete-account/">Delete My Account</a></li>
                 <li><a href="/support/">App Support</a></li>
                 <li><a href="/#contact">Contact</a></li>
+                <li><button type="button" class="link-button" data-consent-open>Privacy choices</button></li>
             </ul>
             <p>&copy; <span data-year>2026</span> Nkosiphendule Jwara. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="/assets/js/consent.js"></script>
     <script src="/assets/js/site.js"></script>
 
 </body>

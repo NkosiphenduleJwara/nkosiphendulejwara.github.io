@@ -1329,3 +1329,136 @@ textarea:focus-visible {
         scroll-behavior: auto !important;
     }
 }
+
+/* POPIA consent banner (assets/js/consent.js) */
+.consent-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1500;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: var(--background-white);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: var(--shadow-xl);
+    padding: 1.25rem 1.5rem;
+}
+
+.consent-banner[hidden] {
+    display: none;
+}
+
+.consent-inner {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.consent-text h2 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+}
+
+.consent-text p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.55;
+}
+
+.consent-text a {
+    color: var(--accent-color);
+}
+
+.consent-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+/* Both choices look the same so neither is nudged (consent must be voluntary). */
+.consent-btn {
+    min-width: 120px;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--background-white);
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.consent-btn:hover,
+.consent-btn[aria-pressed="true"] {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.footer-links button.link-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 0.92rem;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.footer-links button.link-button:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.consent-placeholder {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    background-color: var(--background-white);
+    color: var(--text-light);
+}
+
+.consent-placeholder p {
+    margin-bottom: 1rem;
+}
+
+.consent-placeholder button {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+.captcha-placeholder {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    padding: 0.75rem 0;
+}
+
+@media (max-width: 768px) {
+    .consent-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .consent-actions .consent-btn {
+        flex: 1;
+    }
+}
+
+.checkbox-group a {
+    color: var(--accent-color);
+}
+
+.link-inline {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -65,8 +65,9 @@ Test that the check works: try sending **without** ticking the box. The form say
 
 ## How the check works (for future you)
 
-1. `forms.js` loads hCaptcha from `js.hcaptcha.com` and draws the box inside `<div class="h-captcha">`.
-   It uses the site's light or dark theme, and a compact size on small phones.
+1. To meet POPIA, `forms.js` loads hCaptcha from `js.hcaptcha.com` only after the visitor ticks the form's
+   `popia_consent` box, or chooses "I agree" in the site banner. It then draws the box inside `<div class="h-captcha">`,
+   using the site's light or dark theme and a compact size on small phones. See `docs/popia-consent.md`.
 2. When a person solves it, hCaptcha gives the page a one-time token.
 3. On submit, `forms.js` blocks the send if there's no token. Otherwise it posts the form and the token
    (`h-captcha-response`) to `https://api.web3forms.com/submit`.
@@ -81,6 +82,10 @@ Any form gets everything (sending, captcha, honeypot, fallback) by copying this 
   <input name="name" required>
   <input type="email" name="email" required>   <!-- name="email" becomes the reply-to address -->
 
+  <!-- POPIA: specific consent for this form. Ticking it also loads hCaptcha. -->
+  <label><input type="checkbox" name="popia_consent" value="Yes" required>
+    I agree my details are used to … and sent outside South Africa via Web3Forms and hCaptcha.</label>
+
   <label class="hp-field" aria-hidden="true">Leave this empty
     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
   </label>
@@ -91,8 +96,7 @@ Any form gets everything (sending, captcha, honeypot, fallback) by copying this 
 </form>
 
 <script src="/assets/js/config.js"></script>
-<script src="/assets/js/forms.js"></script>
-<script src="https://js.hcaptcha.com/1/api.js?render=explicit&amp;onload=onHcaptchaLoad&amp;recaptchacompat=off" async defer></script>
+<script src="/assets/js/forms.js"></script>  <!-- injects hCaptcha itself after consent -->
 ```
 
 In `data-subject`, `{field}` is the text the visitor saw and `{field.value}` is the raw option value.
