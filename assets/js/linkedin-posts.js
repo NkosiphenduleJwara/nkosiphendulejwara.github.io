@@ -9,7 +9,7 @@ window.LINKEDIN_POSTS = [
     { urn: 'urn:li:ugcPost:7505186270135042048', height: 1489 },
     { urn: 'urn:li:ugcPost:7487435514753519617', height: 1699 },
     { urn: 'urn:li:share:7478394175374233600', height: 1762 },
-    { urn: 'urn:li:activity:7439203595771736064', height: 1100 }
+    { urn: 'urn:li:activity:7439203595771736064', height: 1700 }
 ];
 
 (function () {
